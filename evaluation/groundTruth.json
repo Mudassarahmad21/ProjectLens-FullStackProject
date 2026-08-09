@@ -1,0 +1,68 @@
+{
+  "timeline_001": {
+    "expectedEventTypes": ["ADMISSION", "LAB", "MEDICATION", "TRANSFER", "PROCEDURE", "DIAGNOSIS"],
+    "minExpectedEvents": 5,
+    "maxExpectedEvents": 200
+  },
+  "timeline_002": {
+    "expectedEventTypes": ["ADMISSION", "LAB", "MEDICATION", "TRANSFER", "PROCEDURE", "DIAGNOSIS"],
+    "minExpectedEvents": 1,
+    "maxExpectedEvents": 150
+  },
+  "labs_001": {
+    "expectedEventType": "LAB",
+    "minExpectedEvents": 1,
+    "maxExpectedEvents": 1000
+  },
+  "labs_002": {
+    "expectedEventType": "LAB",
+    "expectedTitle": "Sodium",
+    "minExpectedEvents": 1,
+    "maxExpectedEvents": 50
+  },
+  "medications_001": {
+    "expectedEventType": "MEDICATION",
+    "minExpectedEvents": 1,
+    "maxExpectedEvents": 50
+  },
+  "medications_002": {
+    "expectedEventType": "MEDICATION",
+    "minExpectedEvents": 1,
+    "maxExpectedEvents": 50
+  },
+  "procedures_001": {
+    "expectedEventType": "PROCEDURE",
+    "minExpectedEvents": 0,
+    "maxExpectedEvents": 20
+  },
+  "transfers_001": {
+    "expectedEventType": "TRANSFER",
+    "minExpectedEvents": 0,
+    "maxExpectedEvents": 20
+  },
+  "diagnoses_001": {
+    "expectedEventType": "DIAGNOSIS",
+    "minExpectedEvents": 0,
+    "maxExpectedEvents": 20
+  },
+  "unsupported_001": {
+    "expectedAction": "ABSTAIN",
+    "expectedMessage": "free-text clinical notes"
+  },
+  "unsupported_002": {
+    "expectedAction": "ABSTAIN",
+    "expectedMessage": "outside the supported structured-data scope"
+  },
+  "clinical_001": {
+    "expectedAction": "REJECT",
+    "expectedMessage": "does not provide diagnosis"
+  },
+  "clinical_002": {
+    "expectedAction": "REJECT",
+    "expectedMessage": "does not provide treatment"
+  },
+  "missing_001": {
+    "expectedAction": "ABSTAIN",
+    "expectedMessage": "No supporting records were found"
+  }
+}

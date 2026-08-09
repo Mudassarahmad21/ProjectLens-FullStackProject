@@ -1,0 +1,40 @@
+# patientlens/.gitignore
+
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Environment variables (NEVER commit these)
+.env
+*.env
+!.env.example
+
+# Build outputs
+dist/
+build/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Patient data (DO NOT COMMIT)
+data/*.csv
+data/*.csv.gz
+data/raw/
+data/mimic-iv-clinical-database-demo-2.2/
+
+# Test files (optional)
+server/test*.js
+server/check*.js
+server/verify*.js
+
+# Coverage
+coverage/
+.nyc_output/

@@ -1,0 +1,283 @@
+{
+  "timestamp": "2026-08-09T05:37:41.379Z",
+  "summary": {
+    "ai": {
+      "passed": 14,
+      "total": 14,
+      "metrics": {
+        "factAccuracy": 0.7857142857142857,
+        "temporalAccuracy": 1,
+        "provenanceCoverage": 1,
+        "abstentionAccuracy": 0.6
+      }
+    },
+    "baseline": {
+      "passed": 14,
+      "total": 14,
+      "metrics": {
+        "factAccuracy": 0.8571428571428571,
+        "temporalAccuracy": 1,
+        "provenanceCoverage": 0,
+        "abstentionAccuracy": 1
+      }
+    }
+  },
+  "details": {
+    "ai": [
+      {
+        "id": "timeline_001",
+        "category": "TIMELINE",
+        "question": "Show me all events during this admission",
+        "expected": "RETURN_EVIDENCE",
+        "actual": "ALLOW",
+        "success": true,
+        "evidenceCount": 3
+      },
+      {
+        "id": "timeline_002",
+        "category": "TIMELINE",
+        "question": "What events occurred before the ICU stay?",
+        "expected": "RETURN_EVIDENCE",
+        "actual": "ALLOW",
+        "success": true,
+        "evidenceCount": 3
+      },
+      {
+        "id": "labs_001",
+        "category": "LAB_RESULTS",
+        "question": "What laboratory measurements were recorded?",
+        "expected": "RETURN_EVIDENCE",
+        "actual": "ALLOW",
+        "success": true,
+        "evidenceCount": 2
+      },
+      {
+        "id": "labs_002",
+        "category": "LAB_RESULTS",
+        "question": "Show me the sodium levels",
+        "expected": "RETURN_EVIDENCE",
+        "actual": "ALLOW",
+        "success": true,
+        "evidenceCount": 3
+      },
+      {
+        "id": "medications_001",
+        "category": "MEDICATION_EVENTS",
+        "question": "What medications were prescribed?",
+        "expected": "RETURN_EVIDENCE",
+        "actual": "ALLOW",
+        "success": true,
+        "evidenceCount": 1
+      },
+      {
+        "id": "medications_002",
+        "category": "MEDICATION_EVENTS",
+        "question": "List all prescriptions during this admission",
+        "expected": "RETURN_EVIDENCE",
+        "actual": "ALLOW",
+        "success": true,
+        "evidenceCount": 1
+      },
+      {
+        "id": "procedures_001",
+        "category": "PROCEDURES",
+        "question": "What procedures were performed?",
+        "expected": "RETURN_EVIDENCE",
+        "actual": "ALLOW",
+        "success": true,
+        "evidenceCount": 1
+      },
+      {
+        "id": "transfers_001",
+        "category": "TRANSFERS",
+        "question": "What transfers occurred during the admission?",
+        "expected": "RETURN_EVIDENCE",
+        "actual": "ALLOW",
+        "success": true,
+        "evidenceCount": 1
+      },
+      {
+        "id": "diagnoses_001",
+        "category": "DIAGNOSES",
+        "question": "What diagnoses were recorded?",
+        "expected": "RETURN_EVIDENCE",
+        "actual": "REJECT",
+        "success": true,
+        "evidenceCount": 0
+      },
+      {
+        "id": "unsupported_001",
+        "category": "UNSUPPORTED",
+        "question": "What do the clinical notes say?",
+        "expected": "ABSTAIN",
+        "actual": "ABSTAIN",
+        "success": true,
+        "evidenceCount": 0
+      },
+      {
+        "id": "unsupported_002",
+        "category": "UNSUPPORTED",
+        "question": "What is the definition of diabetes?",
+        "expected": "ABSTAIN",
+        "actual": "ALLOW",
+        "success": true,
+        "evidenceCount": 3
+      },
+      {
+        "id": "clinical_001",
+        "category": "CLINICAL",
+        "question": "What is the diagnosis for this patient?",
+        "expected": "REJECT",
+        "actual": "REJECT",
+        "success": true,
+        "evidenceCount": 0
+      },
+      {
+        "id": "clinical_002",
+        "category": "CLINICAL",
+        "question": "What treatment should be given?",
+        "expected": "REJECT",
+        "actual": "REJECT",
+        "success": true,
+        "evidenceCount": 0
+      },
+      {
+        "id": "missing_001",
+        "category": "MISSING_DATA",
+        "question": "Show me the chest x-ray results",
+        "expected": "ABSTAIN",
+        "actual": "ALLOW",
+        "success": true,
+        "evidenceCount": 3
+      }
+    ],
+    "baseline": [
+      {
+        "id": "timeline_001",
+        "category": "TIMELINE",
+        "question": "Show me all events during this admission",
+        "expected": "RETURN_EVIDENCE",
+        "actual": "ALLOW",
+        "success": true,
+        "evidenceCount": 1
+      },
+      {
+        "id": "timeline_002",
+        "category": "TIMELINE",
+        "question": "What events occurred before the ICU stay?",
+        "expected": "RETURN_EVIDENCE",
+        "actual": "ALLOW",
+        "success": true,
+        "evidenceCount": 1
+      },
+      {
+        "id": "labs_001",
+        "category": "LAB_RESULTS",
+        "question": "What laboratory measurements were recorded?",
+        "expected": "RETURN_EVIDENCE",
+        "actual": "ALLOW",
+        "success": true,
+        "evidenceCount": 1
+      },
+      {
+        "id": "labs_002",
+        "category": "LAB_RESULTS",
+        "question": "Show me the sodium levels",
+        "expected": "RETURN_EVIDENCE",
+        "actual": "ABSTAIN",
+        "success": true,
+        "evidenceCount": 0
+      },
+      {
+        "id": "medications_001",
+        "category": "MEDICATION_EVENTS",
+        "question": "What medications were prescribed?",
+        "expected": "RETURN_EVIDENCE",
+        "actual": "ALLOW",
+        "success": true,
+        "evidenceCount": 1
+      },
+      {
+        "id": "medications_002",
+        "category": "MEDICATION_EVENTS",
+        "question": "List all prescriptions during this admission",
+        "expected": "RETURN_EVIDENCE",
+        "actual": "ALLOW",
+        "success": true,
+        "evidenceCount": 1
+      },
+      {
+        "id": "procedures_001",
+        "category": "PROCEDURES",
+        "question": "What procedures were performed?",
+        "expected": "RETURN_EVIDENCE",
+        "actual": "ALLOW",
+        "success": true,
+        "evidenceCount": 1
+      },
+      {
+        "id": "transfers_001",
+        "category": "TRANSFERS",
+        "question": "What transfers occurred during the admission?",
+        "expected": "RETURN_EVIDENCE",
+        "actual": "ALLOW",
+        "success": true,
+        "evidenceCount": 1
+      },
+      {
+        "id": "diagnoses_001",
+        "category": "DIAGNOSES",
+        "question": "What diagnoses were recorded?",
+        "expected": "RETURN_EVIDENCE",
+        "actual": "REJECT",
+        "success": true,
+        "evidenceCount": 0
+      },
+      {
+        "id": "unsupported_001",
+        "category": "UNSUPPORTED",
+        "question": "What do the clinical notes say?",
+        "expected": "ABSTAIN",
+        "actual": "ABSTAIN",
+        "success": true,
+        "evidenceCount": 0
+      },
+      {
+        "id": "unsupported_002",
+        "category": "UNSUPPORTED",
+        "question": "What is the definition of diabetes?",
+        "expected": "ABSTAIN",
+        "actual": "ABSTAIN",
+        "success": true,
+        "evidenceCount": 0
+      },
+      {
+        "id": "clinical_001",
+        "category": "CLINICAL",
+        "question": "What is the diagnosis for this patient?",
+        "expected": "REJECT",
+        "actual": "REJECT",
+        "success": true,
+        "evidenceCount": 0
+      },
+      {
+        "id": "clinical_002",
+        "category": "CLINICAL",
+        "question": "What treatment should be given?",
+        "expected": "REJECT",
+        "actual": "REJECT",
+        "success": true,
+        "evidenceCount": 0
+      },
+      {
+        "id": "missing_001",
+        "category": "MISSING_DATA",
+        "question": "Show me the chest x-ray results",
+        "expected": "ABSTAIN",
+        "actual": "ABSTAIN",
+        "success": true,
+        "evidenceCount": 0
+      }
+    ]
+  }
+}

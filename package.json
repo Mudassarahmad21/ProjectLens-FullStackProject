@@ -1,0 +1,23 @@
+{
+  "name": "patientlens",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Explore structured patient journeys with evidence you can verify. Research prototype — not for clinical use.",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -n client,server -c blue,green \"npm --prefix client run dev\" \"npm --prefix server run dev\"",
+    "client": "npm --prefix client run dev",
+    "server": "npm --prefix server run dev",
+    "evaluate": "node evaluation/runEvaluation.js",
+    "test:hallucination": "node evaluation/hallucinationTests.js"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.4"
+  },
+  "dependencies": {
+    "axios": "^1.19.0",
+    "dotenv": "^17.4.2",
+    "lucide-react": "^1.30.0",
+    "react-router-dom": "^7.18.2"
+  }
+}

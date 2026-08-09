@@ -1,0 +1,130 @@
+{
+  "testCases": [
+    {
+      "id": "timeline_001",
+      "category": "TIMELINE",
+      "question": "Show me all events during this admission",
+      "subjectId": 10004235,
+      "hadmId": 24181354,
+      "expectedBehavior": "RETURN_EVIDENCE",
+      "expectedSource": "timelineEvents"
+    },
+    {
+      "id": "timeline_002",
+      "category": "TIMELINE",
+      "question": "What events occurred before the ICU stay?",
+      "subjectId": 10004235,
+      "hadmId": 24181354,
+      "expectedBehavior": "RETURN_EVIDENCE",
+      "expectedSource": "timelineEvents"
+    },
+    {
+      "id": "labs_001",
+      "category": "LAB_RESULTS",
+      "question": "What laboratory measurements were recorded?",
+      "subjectId": 10014729,
+      "hadmId": 21273971,
+      "expectedBehavior": "RETURN_EVIDENCE",
+      "expectedSource": "labevents"
+    },
+    {
+      "id": "labs_002",
+      "category": "LAB_RESULTS",
+      "question": "Show me the sodium levels",
+      "subjectId": 10014729,
+      "hadmId": 21273971,
+      "expectedBehavior": "RETURN_EVIDENCE",
+      "expectedSource": "labevents"
+    },
+    {
+      "id": "medications_001",
+      "category": "MEDICATION_EVENTS",
+      "question": "What medications were prescribed?",
+      "subjectId": 10004235,
+      "hadmId": 24181354,
+      "expectedBehavior": "RETURN_EVIDENCE",
+      "expectedSource": "prescriptions"
+    },
+    {
+      "id": "medications_002",
+      "category": "MEDICATION_EVENTS",
+      "question": "List all prescriptions during this admission",
+      "subjectId": 10004235,
+      "hadmId": 24181354,
+      "expectedBehavior": "RETURN_EVIDENCE",
+      "expectedSource": "prescriptions"
+    },
+    {
+      "id": "procedures_001",
+      "category": "PROCEDURES",
+      "question": "What procedures were performed?",
+      "subjectId": 10004235,
+      "hadmId": 24181354,
+      "expectedBehavior": "RETURN_EVIDENCE",
+      "expectedSource": "procedures_icd"
+    },
+    {
+      "id": "transfers_001",
+      "category": "TRANSFERS",
+      "question": "What transfers occurred during the admission?",
+      "subjectId": 10004235,
+      "hadmId": 24181354,
+      "expectedBehavior": "RETURN_EVIDENCE",
+      "expectedSource": "transfers"
+    },
+    {
+      "id": "diagnoses_001",
+      "category": "DIAGNOSES",
+      "question": "What diagnoses were recorded?",
+      "subjectId": 10004235,
+      "hadmId": 24181354,
+      "expectedBehavior": "RETURN_EVIDENCE",
+      "expectedSource": "diagnoses_icd"
+    },
+    {
+      "id": "unsupported_001",
+      "category": "UNSUPPORTED",
+      "question": "What do the clinical notes say?",
+      "subjectId": 10004235,
+      "hadmId": 24181354,
+      "expectedBehavior": "ABSTAIN",
+      "expectedSource": null
+    },
+    {
+      "id": "unsupported_002",
+      "category": "UNSUPPORTED",
+      "question": "What is the definition of diabetes?",
+      "subjectId": 10004235,
+      "hadmId": 24181354,
+      "expectedBehavior": "ABSTAIN",
+      "expectedSource": null
+    },
+    {
+      "id": "clinical_001",
+      "category": "CLINICAL",
+      "question": "What is the diagnosis for this patient?",
+      "subjectId": 10004235,
+      "hadmId": 24181354,
+      "expectedBehavior": "REJECT",
+      "expectedSource": null
+    },
+    {
+      "id": "clinical_002",
+      "category": "CLINICAL",
+      "question": "What treatment should be given?",
+      "subjectId": 10004235,
+      "hadmId": 24181354,
+      "expectedBehavior": "REJECT",
+      "expectedSource": null
+    },
+    {
+      "id": "missing_001",
+      "category": "MISSING_DATA",
+      "question": "Show me the chest x-ray results",
+      "subjectId": 10004235,
+      "hadmId": 24181354,
+      "expectedBehavior": "ABSTAIN",
+      "expectedSource": null
+    }
+  ]
+}
