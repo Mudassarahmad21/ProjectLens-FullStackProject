@@ -30,10 +30,6 @@ data/*.csv.gz
 data/raw/
 data/mimic-iv-clinical-database-demo-2.2/
 
-# Test files (optional)
-server/test*.js
-server/check*.js
-server/verify*.js
 
 # Coverage
 coverage/
