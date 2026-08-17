@@ -7,7 +7,8 @@ const groq = new Groq({
 });
 
 export const AI_MODEL = process.env.AI_MODEL || 'mixtral-8x7b-32768';
-export const SUPPORTED_INTENTS = [ 'TIMELINE',
+export const SUPPORTED_INTENTS = [ 
+  'TIMELINE',
   'LAB_RESULTS',
   'MEDICATION_EVENTS',
   'PROCEDURES',
