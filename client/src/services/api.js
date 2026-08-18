@@ -117,46 +117,154 @@
 
 // export default api;
 
-// client/src/services/api.js
-// client/src/services/api.js
+// // client/src/services/api.js
+// // client/src/services/api.js
+// import axios from 'axios';
+
+// const API_BASE = '/api';
+
+// const api = axios.create({
+//   baseURL: API_BASE,
+//   headers: {
+//     'Content-Type': 'application/json',
+//   },
+// });
+
+// // Request interceptor to add token
+// api.interceptors.request.use(
+//   (config) => {
+//     const token = localStorage.getItem('patientlens_token');
+//     if (token) {
+//       config.headers.Authorization = `Bearer ${token}`;
+//     }
+//     return config;
+//   },
+//   (error) => {
+//     return Promise.reject(error);
+//   }
+// );
+
+// // Response interceptor for error handling
+// api.interceptors.response.use(
+//   (response) => response,
+//   (error) => {
+//     if (error.response?.status === 401) {
+//       // Token expired or invalid
+//       localStorage.removeItem('patientlens_token');
+//       delete api.defaults.headers.common['Authorization'];
+//       // Redirect to login if not already there
+//       if (!window.location.pathname.includes('/login') && !window.location.pathname.includes('/register')) {
+//         window.location.href = '/login';
+//       }
+//     }
+//     return Promise.reject(error);
+//   }
+// );
+
+// // ============================================
+// // PATIENT ENDPOINTS
+// // ============================================
+// export const getPatients = () => api.get('/patients');
+// export const getPatient = (subjectId) => api.get(`/patients/${subjectId}`);
+// export const getPatientAdmissions = (subjectId) => api.get(`/patients/${subjectId}/admissions`);
+
+// // ============================================
+// // ADMISSION ENDPOINTS
+// // ============================================
+// export const getAdmission = (hadmId) => api.get(`/admissions/${hadmId}`);
+// export const getAdmissionTimeline = (hadmId, params) => 
+//   api.get(`/admissions/${hadmId}/timeline`, { params });
+
+// // Alias for getAdmissionTimeline (for compatibility)
+// export const getTimeline = getAdmissionTimeline;
+
+// // ============================================
+// // QUERY ENDPOINT
+// // ============================================
+// export const postQuery = (data) => api.post('/query', data);
+// export const naturalLanguageQuery = postQuery; // Alias for backward compatibility
+
+// // ============================================
+// // EVALUATION ENDPOINTS
+// // ============================================
+// export const getEvaluationResults = () => api.get('/evaluation/results');
+// export const getEvaluationSummary = () => api.get('/evaluation/summary');
+
+// // ============================================
+// // EVIDENCE ENDPOINT
+// // ============================================
+// export const getEvidence = (eventId) => api.get(`/evidence/${eventId}`);
+
+// // ============================================
+// // AUTH ENDPOINTS
+// // ============================================
+// export const registerUser = (userData) => api.post('/auth/register', userData);
+// export const loginUser = (credentials) => api.post('/auth/login', credentials);
+// export const getCurrentUser = () => api.get('/auth/me');
+// export const updateUserProfile = (data) => api.put('/auth/profile', data);
+// export const changeUserPassword = (data) => api.put('/auth/change-password', data);
+// export const logoutUser = () => api.post('/auth/logout');
+
+// // ============================================
+// // DEFAULT EXPORT
+// // ============================================
+// export default api;
+
+
 import axios from 'axios';
 
-const API_BASE = '/api';
+const API_BASE = `${import.meta.env.VITE_API_URL}/api`;
 
 const api = axios.create({
   baseURL: API_BASE,
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true,
 });
 
-// Request interceptor to add token
+// ============================================
+// REQUEST INTERCEPTOR
+// ============================================
+
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('patientlens_token');
+
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
+
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
-// Response interceptor for error handling
+// ============================================
+// RESPONSE INTERCEPTOR
+// ============================================
+
 api.interceptors.response.use(
   (response) => response,
+
   (error) => {
+    console.error(
+      'API Error:',
+      error.response?.data || error.message
+    );
+
     if (error.response?.status === 401) {
-      // Token expired or invalid
       localStorage.removeItem('patientlens_token');
-      delete api.defaults.headers.common['Authorization'];
-      // Redirect to login if not already there
-      if (!window.location.pathname.includes('/login') && !window.location.pathname.includes('/register')) {
+      delete api.defaults.headers.common.Authorization;
+
+      if (
+        !window.location.pathname.includes('/login') &&
+        !window.location.pathname.includes('/register')
+      ) {
         window.location.href = '/login';
       }
     }
+
     return Promise.reject(error);
   }
 );
@@ -164,48 +272,74 @@ api.interceptors.response.use(
 // ============================================
 // PATIENT ENDPOINTS
 // ============================================
-export const getPatients = () => api.get('/patients');
-export const getPatient = (subjectId) => api.get(`/patients/${subjectId}`);
-export const getPatientAdmissions = (subjectId) => api.get(`/patients/${subjectId}/admissions`);
+
+export const getPatients = () =>
+  api.get('/patients');
+
+export const getPatient = (subjectId) =>
+  api.get(`/patients/${subjectId}`);
+
+export const getPatientAdmissions = (subjectId) =>
+  api.get(`/patients/${subjectId}/admissions`);
 
 // ============================================
 // ADMISSION ENDPOINTS
 // ============================================
-export const getAdmission = (hadmId) => api.get(`/admissions/${hadmId}`);
-export const getAdmissionTimeline = (hadmId, params) => 
+
+export const getAdmission = (hadmId) =>
+  api.get(`/admissions/${hadmId}`);
+
+export const getAdmissionTimeline = (hadmId, params) =>
   api.get(`/admissions/${hadmId}/timeline`, { params });
 
-// Alias for getAdmissionTimeline (for compatibility)
 export const getTimeline = getAdmissionTimeline;
 
 // ============================================
-// QUERY ENDPOINT
+// QUERY
 // ============================================
-export const postQuery = (data) => api.post('/query', data);
-export const naturalLanguageQuery = postQuery; // Alias for backward compatibility
+
+export const postQuery = (data) =>
+  api.post('/query', data);
+
+export const naturalLanguageQuery = postQuery;
 
 // ============================================
-// EVALUATION ENDPOINTS
+// EVALUATION
 // ============================================
-export const getEvaluationResults = () => api.get('/evaluation/results');
-export const getEvaluationSummary = () => api.get('/evaluation/summary');
+
+export const getEvaluationResults = () =>
+  api.get('/evaluation/results');
+
+export const getEvaluationSummary = () =>
+  api.get('/evaluation/summary');
 
 // ============================================
-// EVIDENCE ENDPOINT
+// EVIDENCE
 // ============================================
-export const getEvidence = (eventId) => api.get(`/evidence/${eventId}`);
+
+export const getEvidence = (eventId) =>
+  api.get(`/evidence/${eventId}`);
 
 // ============================================
-// AUTH ENDPOINTS
+// AUTH
 // ============================================
-export const registerUser = (userData) => api.post('/auth/register', userData);
-export const loginUser = (credentials) => api.post('/auth/login', credentials);
-export const getCurrentUser = () => api.get('/auth/me');
-export const updateUserProfile = (data) => api.put('/auth/profile', data);
-export const changeUserPassword = (data) => api.put('/auth/change-password', data);
-export const logoutUser = () => api.post('/auth/logout');
 
-// ============================================
-// DEFAULT EXPORT
-// ============================================
+export const registerUser = (userData) =>
+  api.post('/auth/register', userData);
+
+export const loginUser = (credentials) =>
+  api.post('/auth/login', credentials);
+
+export const getCurrentUser = () =>
+  api.get('/auth/me');
+
+export const updateUserProfile = (data) =>
+  api.put('/auth/profile', data);
+
+export const changeUserPassword = (data) =>
+  api.put('/auth/change-password', data);
+
+export const logoutUser = () =>
+  api.post('/auth/logout');
+
 export default api;
