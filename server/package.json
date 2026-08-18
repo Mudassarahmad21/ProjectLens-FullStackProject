@@ -41,7 +41,6 @@
     "groq-sdk": "^1.5.0",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.9.2",
-    "openai": "^7.4.0",
-    "patientlens": "file:.."
+    "openai": "^7.4.0"
   }
 }
