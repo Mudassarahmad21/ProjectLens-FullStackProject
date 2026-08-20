@@ -253,7 +253,7 @@ app.use("/api/evidence", protect, evidenceRoutes);
 
 app.use("/api", protect, queryRoutes);
 
-app.use("/api/evaluation", protect, evaluationRoutes);
+app.use("/api/evaluation", evaluationRoutes);
 
 // ================================
 // Error Handling
