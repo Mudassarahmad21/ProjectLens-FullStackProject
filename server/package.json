@@ -26,7 +26,8 @@
     "test:ai": "node testAIIntentParser.js",
     "test:answer": "node testAnswerGeneration.js",
     "test:safety": "node testSafety.js",
-    "evaluate": "node evaluation/runEvaluation.js"
+    "evaluate": "node evaluation/runEvaluation.js",
+    "import:evaluation": "node scripts/importEvaluationResults.js"
   },
   "keywords": [],
   "author": "",
